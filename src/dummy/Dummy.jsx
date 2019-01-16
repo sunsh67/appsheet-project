@@ -1,21 +1,21 @@
-import react, { Componet } from 'react';
+import React, { Component } from 'react';
 import { getInfo } from '../services/serviceCalls';
 
-class Dummy extends Componet {
+class Dummy extends Component {
 
     constructor(props) {
         super(props);
-        this.id = this.props.id;
         this.state = {
             dummy:
             {
-                id: this.id,
+                id: this.props.id,
                 name: '',
                 age: 0,
                 number: '',
                 photo: '',
                 bio: ''
-            }
+            },
+            errorMsg: ''
 
         }
     }
@@ -29,15 +29,24 @@ class Dummy extends Componet {
                 this.setState({
                     dummy: {
                         name: response.name,
-
-
+                        age: response.age,
+                        number: response.number,
+                        photo: response.photo,
+                        bio: response.bio
                     }
                 })
+            }).catch((error) => {
+                this.setState({ errorMsg: error.error });
             })
     }
 
-    render(){
-        
+    render() {
+        return (
+            <div>
+                {this.state.dummy.name}
+                {this.state.dummy.age}
+            </div>)
+
     }
 }
 

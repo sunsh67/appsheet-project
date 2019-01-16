@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dummy from '../dummy/Dummy';
 import { getList } from '../services/serviceCalls';
 
 class DummyList extends Component {
@@ -29,7 +30,7 @@ class DummyList extends Component {
     render() {
         return (
             <div>
-                {this.state.dummies}
+               {this.state.dummies.map(dummy => <Dummy id={dummy} key={dummy}></Dummy>)}
             </div>
         )
     }
