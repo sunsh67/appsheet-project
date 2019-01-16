@@ -30,3 +30,10 @@ const commonFetch = (url, options) => {
         }).catch((error) => error);
 }
 
+export const getList = ({token}) => {
+    const url = `${endPoint}/list`;
+    return commonFetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', 'x-user-token': token }
+    });
+}
