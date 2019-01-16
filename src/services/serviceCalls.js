@@ -34,6 +34,14 @@ export const getList = ({token}) => {
     const url = `${endPoint}/list`;
     return commonFetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json', 'x-user-token': token }
+        headers: {'Content-Type': 'application/json', 'x-user-token': token}
     });
+}
+
+export const getInfo = ({id}) => {
+    const url = `${endPoint}/detail/${id}`;
+    return commonFetch(url, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    })
 }
